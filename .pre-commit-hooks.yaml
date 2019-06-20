@@ -1,0 +1,6 @@
+- id: nbstripout
+  name: Strip Outputs from Notebooks
+  description: Strip outputs from all new notebooks
+  entry: nbstripout
+  language: script
+  files: (^|/).+\.ipynb$
