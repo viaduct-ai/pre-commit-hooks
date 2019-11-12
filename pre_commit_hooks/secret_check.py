@@ -26,12 +26,13 @@ def main(argv=None):
             docs = yaml.load_all(f, Loader=yaml.FullLoader)
 
             for doc in docs:
-                if doc['kind'] == 'Secret':
-                    if 'sops' not in doc:
-                        retval = 1
-                    else:
-                        if not filename.endswith('enc.yaml'):
+                if 'kind' in doc:
+                    if doc['kind'] == 'Secret':
+                        if 'sops' not in doc:
                             retval = 1
+                        else:
+                            if not filename.endswith('enc.yaml'):
+                                retval = 1
 
     return retval
 
