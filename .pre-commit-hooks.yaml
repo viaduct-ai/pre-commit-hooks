@@ -10,4 +10,4 @@
   description: Check yaml files for secrets and that files end in .enc.yaml
   entry: secret_check
   language: python
-  files: (^|/).+\.yaml$
+  types: [yaml]
