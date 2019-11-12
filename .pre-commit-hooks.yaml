@@ -4,3 +4,10 @@
   entry: nbstripout
   language: script
   files: (^|/).+\.ipynb$
+
+- id: secret_check
+  name: Check yaml files for secrets
+  description: Check yaml files for secrets and that files end in .enc.yaml
+  entry: secret_check.py
+  language: python
+  files: (^|/).+\.yaml$
