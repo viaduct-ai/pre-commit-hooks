@@ -8,6 +8,6 @@
 - id: secret_check
   name: Check yaml files for secrets
   description: Check yaml files for secrets and that files end in .enc.yaml
-  entry: secret_check.py
+  entry: secret_check
   language: python
   files: (^|/).+\.yaml$
