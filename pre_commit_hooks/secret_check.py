@@ -23,17 +23,16 @@ def main(argv=None):
     for filename in args.filenames:
         try:
             f = io.open(filename, encoding='UTF-8')
-            docs = yaml.safe_load(f)
+            data = yaml.safe_load(f)
         except:
             continue
 
-        for doc in docs:
-            if 'kind' in doc:
-                if doc['kind'] == 'Secret':
-                    if 'sops' not in doc:
-                        retval = 1
-                    elif not filename.endswith('enc.yaml'):
-                        retval = 1
+        if 'kind' in data:
+            if data['kind'] == 'Secret':
+                if 'sops' not in data:
+                    retval = 1
+                elif not filename.endswith('enc.yaml'):
+                    retval = 1
 
     return retval
 
