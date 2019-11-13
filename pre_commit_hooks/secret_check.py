@@ -21,19 +21,18 @@ def main(argv=None):
 
     retval = 0
     for filename in args.filenames:
+        try:
+            with io.open(filename, encoding='UTF-8') as f:
+                docs = yaml.load_all(f, Loader=yaml.FullLoader)
 
-        with io.open(filename, encoding='UTF-8') as f:
-            docs = yaml.load_all(f, Loader=yaml.FullLoader)
-
-            for doc in docs:
-                if 'kind' in doc:
-                    if doc['kind'] == 'Secret':
-                        if 'sops' not in doc:
-                            retval = 1
-                        else:
-                            if not filename.endswith('enc.yaml'):
+                for doc in docs:
+                    if 'kind' in doc:
+                        if doc['kind'] == 'Secret':
+                            if 'sops' not in doc:
                                 retval = 1
-
+                            else:
+                                if not filename.endswith('enc.yaml'):
+                                    retval = 1
     return retval
 
 
