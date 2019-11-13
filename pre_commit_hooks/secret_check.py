@@ -23,10 +23,9 @@ def main(argv=None):
     for filename in args.filenames:
         try:
             f = io.open(filename, encoding='UTF-8')
+            docs = yaml.load_all(f, Loader=yaml.FullLoader)
         except:
             continue
-
-        docs = yaml.load_all(f, Loader=yaml.FullLoader)
 
         for doc in docs:
             if 'kind' in doc:
