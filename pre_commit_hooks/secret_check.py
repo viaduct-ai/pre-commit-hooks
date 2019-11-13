@@ -23,7 +23,7 @@ def main(argv=None):
     for filename in args.filenames:
         try:
             f = io.open(filename, encoding='UTF-8')
-            docs = yaml.load_all(f, Loader=yaml.FullLoader)
+            docs = yaml.safe_load(f)
         except:
             continue
 
