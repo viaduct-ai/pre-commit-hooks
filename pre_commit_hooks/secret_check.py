@@ -29,8 +29,10 @@ def main(argv=None):
                 if 'kind' in data:
                     if data['kind'] == 'Secret':
                         if 'sops' not in data:
+                            print(f'Sops not defined: {filename}')
                             retval = 1
                         elif not filename.endswith('enc.yaml'):
+                            print(f"Doesn't end correctly: {filename}")
                             retval = 1
             except:
                 continue
