@@ -21,18 +21,16 @@ def main(argv=None):
 
     retval = 0
     for filename in args.filenames:
-        try:
-            f = io.open(filename, encoding='UTF-8')
-            data = yaml.safe_load(f)
-        except:
-            continue
 
-        if 'kind' in data:
-            if data['kind'] == 'Secret':
-                if 'sops' not in data:
-                    retval = 1
-                elif not filename.endswith('enc.yaml'):
-                    retval = 1
+        with io.open(filename, encoding='UTF-8') as f:
+            data = yaml.safe_load(f)
+
+            if 'kind' in data:
+                if data['kind'] == 'Secret':
+                    if 'sops' not in data:
+                        retval = 1
+                    elif not filename.endswith('enc.yaml'):
+                        retval = 1
 
     return retval
 
