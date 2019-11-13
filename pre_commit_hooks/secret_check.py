@@ -23,7 +23,10 @@ def main(argv=None):
     for filename in args.filenames:
 
         with io.open(filename, encoding='UTF-8') as f:
-            data = yaml.safe_load(f)
+            try:
+                data = yaml.safe_load(f)
+            except:
+                continue
 
             if 'kind' in data:
                 if data['kind'] == 'Secret':
