@@ -5,9 +5,16 @@
   language: script
   files: (^|/).+\.ipynb$
 
-- id: secret_check
-  name: Check yaml files for secrets
-  description: Check yaml files for secrets and that files end in .enc.yaml
-  entry: secret_check
+- id: validate_secrets_are_encrypted
+  name: Check that secret files are formatted correctly
+  description: Check yaml secret have data in the 'sops' field
+  entry: validate_secrets_are_encrypted 
+  language: python
+  types: [yaml]
+
+- id: validate_encrypted_secret_name
+  name: Check secret files for correct ending
+  description: Check yaml secret files end in .enc.yaml
+  entry: validate_encrypted_secret_name
   language: python
   types: [yaml]
