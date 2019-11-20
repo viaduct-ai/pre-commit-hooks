@@ -6,15 +6,15 @@
   files: (^|/).+\.ipynb$
 
 - id: validate_secrets_are_encrypted
-  name: Check Kubernetes Secret are Encrypted with SOPS
-  description: Check Kubernetes Secret are Encrypted with SOPS
+  name: Check Kubernetes' Secrets are Encrypted with SOPS
+  description: Check kubernetes' secrets are encrypted with SOPS
   entry: validate_secrets_are_encrypted
   language: python
   types: [yaml]
 
 - id: validate_encrypted_secret_name
-  name: Check SOPS Encrypted Secrets' File Names End with .enc.yaml
-  description: Check SOPS Encrypted Secrets' File Names End with .enc.yaml
+  name: Check Kubernetes SOPS Encrypted Secrets' Filenames End with .enc.yaml
+  description: Check kubernetes' SOPS encrypted yaml secrets` filenames end with .enc.yaml
   entry: validate_encrypted_secret_name
   language: python
   types: [yaml]
