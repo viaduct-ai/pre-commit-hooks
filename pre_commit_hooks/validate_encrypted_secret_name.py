@@ -7,6 +7,8 @@ import sys
 import yaml
 
 
+ENC_SUFFIX =  ".enc.yaml"
+
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -27,10 +29,14 @@ def main(argv=None):
                 data = yaml.safe_load(f)
 
                 kind = data.get("kind", None)
-                if kind == 'Secret':
-                    if not filename.endswith('enc.yaml'):
-                        print(f"Secret file doesn't end correctly: {filename}")
-                        retval = 1
+
+                # Only check encrypted secrets
+                if kind != 'Secret' or 'sops' not in data:
+                    continue
+
+                if not filename.endswith(ENC_SUFFIX):
+                    print(f"SOPS encrypted secrets should end with {ENC_SUFFIX}: {filename}")
+                    retval = 1
             except:
                 continue
 

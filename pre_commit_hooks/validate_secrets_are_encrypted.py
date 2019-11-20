@@ -27,10 +27,10 @@ def main(argv=None):
                 data = yaml.safe_load(f)
 
                 kind = data.get("kind", None)
-                if kind == 'Secret':
-                    if 'sops' not in data:
-                        print(f'Sops not defined: {filename}')
-                        retval = 1
+
+                if kind == 'Secret' and 'sops' not in data:
+                    print(f'Secret is not encrypted with SOPS: {filename}')
+                    retval = 1
             except:
                 continue
 
