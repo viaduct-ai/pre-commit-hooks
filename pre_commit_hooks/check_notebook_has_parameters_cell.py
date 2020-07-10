@@ -19,7 +19,6 @@ def main(argv=None):
     parser.add_argument('filenames', nargs='*', help='Filenames to check.')
     args = parser.parse_args(argv)
 
-    retval = 0
     for filename in args.filenames:
 
         with io.open(filename) as f:
@@ -29,15 +28,20 @@ def main(argv=None):
                 parameters_cell_exists = False
 
                 for cell in data['cells']:
-                    if 'parameters' in cell['metadata']['tags']:
+                    metadata = cell['metadata']
+
+                    if 'tags' not in metadata:
+                        continue
+
+                    if 'parameters' in metadata['tags']:
                         parameters_cell_exists = True
 
                 if not parameters_cell_exists:
-                    retval = 1
+                    return 1
             except:
                 continue
 
-    return retval
+    return 0
 
 
 if __name__ == '__main__':
