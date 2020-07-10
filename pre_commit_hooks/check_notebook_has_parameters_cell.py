@@ -37,8 +37,10 @@ def main(argv=None):
                         parameters_cell_exists = True
 
                 if not parameters_cell_exists:
+                    print(f'File {filename} does not have a parameters cell')
                     return 1
-            except:
+            except Exception as e:
+                print(f'Exception of file {filename}: {e}')
                 continue
 
     return 0

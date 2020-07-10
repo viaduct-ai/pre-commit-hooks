@@ -24,4 +24,4 @@
   description: Check that all notebooks contain a cell tagged with 'parameters'
   entry: check_notebook_has_parameters_cell
   language: python
-  types: [ipynb]
+  files: (^|/).+\.ipynb$
