@@ -28,6 +28,7 @@ def main(argv=None):
 
 def find_duplicate_dags():
     dagbag = DagBag()
+    # dagbag stats are the only dagbag collection that haven't deduped
     dag_stats = [stat.dags.strip('][').strip('"').split(', ')  for stat in dagbag.dagbag_stats]
     counts = Counter([dag_id for stat in dag_stats for dag_id in stat])
     return [dag_id for dag_id, count in counts if count > 1]
