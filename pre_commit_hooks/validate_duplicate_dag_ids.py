@@ -10,15 +10,6 @@ from collections import Counter
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '-m',
-        '--multi',
-        '--allow-multiple-documents',
-        action='store_true',
-    )
-
-    args = parser.parse_args(argv)
 
     dupes = find_duplicate_dags()
     if dupes:

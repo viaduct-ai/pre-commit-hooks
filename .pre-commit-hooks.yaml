@@ -25,3 +25,9 @@
   entry: check_notebook_has_parameters_cell
   language: python
   files: (^|/).+\.ipynb$
+
+- id: validate_duplicate_dag_ids
+  name: 'Ensure that we do not have duplicate dag ids names'
+  description: 'Ensure that we do not have duplicate dag ids names'
+  entry: validate_duplicate_dag_ids
+  language: python
