@@ -27,7 +27,7 @@
   files: (^|/).+\.ipynb$
 
 - id: validate_duplicate_dag_ids
-  name: 'Ensure that we do not have duplicate dag ids names'
+  name: 'Ensure that we do not have duplicate dag ids'
   description: 'Ensure that we do not have duplicate dag ids names'
   entry: validate_duplicate_dag_ids
   language: python
