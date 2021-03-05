@@ -5,6 +5,7 @@ import io
 import sys
 
 import json
+import subprocess
 from airflow.models import DagBag
 from collections import Counter
 
