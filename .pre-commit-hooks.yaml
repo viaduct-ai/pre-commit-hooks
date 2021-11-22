@@ -25,3 +25,10 @@
   entry: check_notebook_has_parameters_cell
   language: python
   files: (^|/).+\.ipynb$
+
+- id: nbsmoke_lint
+  name: Check that all notebooks pass nbsmoke lint check
+  description: Check that all notebooks pass nbsmoke lint check
+  entry: nbsmoke_lint
+  language: python
+  files: (^|/).+\.ipynb$
