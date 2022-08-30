@@ -31,7 +31,7 @@ def main(argv=None):
                 "-Wignore",
                 # Ignore undefined 'spark' for PySpark notebooks.
                 "-o",
-                "nbsmoke_flakes_to_ignore=undefined name 'spark'",
+                "nbsmoke_flakes_to_ignore=undefined name '(sc|spark)'",
                 # Perform nbsmoke lint check.
                 "--nbsmoke-lint",
             ]
