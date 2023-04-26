@@ -36,6 +36,6 @@
 - id: pg_format
   name: Format postgres SQL files with pgFormatter
   description: Format postgres SQL files with pgFormatter
-  entry: pgFormatter/pg_format -i -L
+  entry: pgFormatter/pg_format -i -L --no-space-function
   language: script
   types: [sql]
