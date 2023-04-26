@@ -3,7 +3,7 @@
   description: Strip outputs from all new notebooks
   entry: nbstripout
   language: script
-  files: (^|/).+\.ipynb$
+  types: [jupyter]
 
 - id: validate_secrets_are_encrypted
   name: Check Kubernetes' Secrets are Encrypted with SOPS
@@ -24,11 +24,18 @@
   description: Check that all notebooks contain a cell tagged with 'parameters'
   entry: check_notebook_has_parameters_cell
   language: python
-  files: (^|/).+\.ipynb$
+  types: [jupyter]
 
 - id: nbsmoke_lint
   name: Check that all notebooks pass nbsmoke lint check
   description: Check that all notebooks pass nbsmoke lint check
   entry: nbsmoke_lint
   language: python
-  files: (^|/).+\.ipynb$
+  types: [jupyter]
+
+- id: pg_format
+  name: Format postgres SQL files with pgFormatter
+  description: Format postgres SQL files with pgFormatter
+  entry: pgFormatter/pg_format -i -L
+  language: script
+  types: [sql]
